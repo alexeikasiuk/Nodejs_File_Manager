@@ -1,0 +1,20 @@
+{
+  "name": "nodejs_file_manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ./src/script.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexeikasiuk/Nodejs_File_Manager.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexeikasiuk/Nodejs_File_Manager/issues"
+  },
+  "homepage": "https://github.com/alexeikasiuk/Nodejs_File_Manager#readme"
+}
