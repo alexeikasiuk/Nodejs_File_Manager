@@ -2,8 +2,7 @@ import { readdir } from 'fs/promises';
 
 // show first level childen for the directory
 export const printFilesInFolder = async (args, _self) => {
-  if (args.length > 0)
-    throw new Error("Error! 'ls' must used w/a any arguments!");
+  if (args.length > 0) throw new Error(`$ 'ls' must called w/o any arguments`);
 
   const files = await readdir(_self.curDir, { withFileTypes: true });
 

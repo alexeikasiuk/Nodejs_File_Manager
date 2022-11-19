@@ -4,8 +4,7 @@ import { createHmac } from 'crypto';
 
 // show the filePath hash in the console
 export const calcHash = async (args, _self) => {
-  if (args.length !== 1)
-    throw new Error(`Error! 'hash' must called with a one path argument!`);
+  if (args.length !== 1) throw new Error(`$ hash [filepath]`);
 
   const src = path.resolve(_self.curDir, args[0]);
   const data = await readFile(src);

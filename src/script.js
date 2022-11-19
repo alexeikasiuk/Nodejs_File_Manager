@@ -3,7 +3,7 @@ import { homedir } from 'node:os';
 //project modules
 import { getUserName } from './help/getUserName.js';
 import { showCurDir } from './help/showCurDir.js';
-import { goToParendDir } from './fs/up.js';
+import { goToParentDir } from './fs/up.js';
 import { printFilesInFolder } from './fs/ls.js';
 import { showSystemInfo } from './os/os.js';
 import { goToPath } from './fs/cd.js';
@@ -22,7 +22,7 @@ class FileManager {
     this.userName = getUserName();
     this.curDir = homedir();
     this.commands = {
-      up: goToParendDir,
+      up: goToParentDir,
       cd: goToPath,
       ls: printFilesInFolder,
       cat: printFile,
@@ -53,7 +53,7 @@ class FileManager {
     });
 
     //exit by typing "exit"
-    process.on('exit', () =>
+    process.on('.exit', () =>
       console.log(
         `\nThank you for using File Manager, ${this.userName}, goodbye!`
       )
@@ -69,11 +69,15 @@ class FileManager {
 
     try {
       if (!(cmd in this.commands))
-        throw new Error(`Error! Unknown command '${cmd}'`);
+        throw new Error(
+          `Invalid input\n[up | cd | ls | cat | add | rn | cp | mv | rm | os | hash | compress | decompress][args]`
+        );
 
       await this.commands[cmd](cmdArgs, this);
     } catch (e) {
-      console.log(e.message.replace('ENOENT:', 'Error!'));
+      if (e.message.indexOf('$') !== -1)
+        console.log(e.message.replace('$', 'Invalid input.'));
+      else console.log(`Operation failed. ${e.message}`);
     } finally {
       showCurDir(this.curDir);
     }

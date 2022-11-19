@@ -3,8 +3,7 @@ import { createReadStream } from 'fs';
 
 // show the filedata in the console
 export const printFile = async (args, _self) => {
-  if (args.length !== 1)
-    throw new Error("ERROR! 'cat' must called with a one path argument!");
+  if (args.length !== 1) throw new Error(`$ cat [filepath]`);
 
   const filePath = path.resolve(_self.curDir, args[0]);
 
